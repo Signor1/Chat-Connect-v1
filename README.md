@@ -1,4 +1,6 @@
 <p align="left"> <img src="https://github.com/Signor1/Chat-Connect-v1/blob/80c807a0263f9b099d9a2dc33fcd9d0ac5c93945/banner.png"></p>
+
+
 # CHAT CONNECT v1
 ## Interactive chat platform
 
