@@ -1,0 +1,1590 @@
+//mixins
+
+//mixin for home page
+@mixin container {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+	gap: 1.5rem;
+	z-index: 5;
+	@include mQ(767px){
+		gap: 1rem;
+	}
+	header#homeheader {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background: $bgColorDark;
+		padding: 1rem 0;
+		.logo {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			@include mQ(767px){
+				gap:0.4rem;
+			}
+			img {
+				width: 60px;
+				@include mQ(767px){
+					width: 40px;
+				}
+			}
+			a {
+				color: $primaryColor;
+				font-weight: bolder;
+				font-size: 32px;
+				@include mQ(767px){
+					font-size: 24px;
+				}
+				&:hover {
+					color: $secondaryColor;
+				}
+			}
+		}
+	}
+	main {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		height:100vh;
+		@include mQ(767px){
+			flex-direction: column-reverse;
+			justify-content: center;
+			align-items: center;
+		}
+		@include mQ(1024px, 768px){
+			flex-direction: column-reverse;
+			justify-content: center;
+			align-items: center;
+		}
+		.welcome{
+			width: 50%;
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-start;
+			align-items: flex-start;
+			gap: 1.5rem;
+			padding-inline: 1.5rem;
+			@include mQ(767px){
+				width: 100%;
+			}
+			@include mQ(1024px, 768px){
+				width:100%;
+				align-items: center;
+			}
+			h1 {
+				color: $primaryColor;
+				font-weight: 600;
+				font-size: 64px;
+				@include mQ(767px){
+					font-size: 30px;
+				}
+				@include mQ(1024px, 768px){
+					font-size: 39px;
+				}
+			}
+			p{
+				color: $secondaryColor;
+				font-size: 18px;
+				font-weight: 500;
+				@include mQ(767px){
+					font-size: 15px;
+				}
+			}
+			.buttons {
+				display: flex;
+				flex-direction: row;
+				justify-content: flex-start;
+				align-items: center;
+				width: 100%;
+				gap: 2.5rem;
+				@include mQ(767px){
+					justify-content: center;
+					gap:1.5rem;
+				}
+				@include mQ(1024px, 768px){
+					justify-content: center;
+					gap:2rem;
+				}
+				.signup {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-decoration: none;
+					color: $secondaryColor;
+					padding: 8px 14px;
+					background: $primaryColor;
+					font-weight: 500;
+					font-size: 18px;
+					gap: 0.4rem;
+					transition: 0.2s;
+					&:hover {
+						background: darken($primaryColor, 10);
+					}
+				}
+				.login {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					text-decoration: none;
+					color: $primaryColor;
+					padding: 8px 20px;
+					background: $secondaryColor;
+					font-size: 18px;
+					font-weight: 500;
+					gap: 0.4rem;
+					transition: 0.2s;
+					&:hover {
+						background: darken($secondaryColor, 20);
+					}
+				}
+			}
+		}
+		#img1{
+			width: 45%;
+			height: auto;
+			position: relative;
+			@include mQ(767px){
+				width: 100%;
+			}
+			@include mQ(1024px, 768px){
+				width: 100%;
+			}
+			&::before{
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 40%;
+				width: 250px;
+				height:250px;
+				border-radius: 50%;
+				background-color: $primaryColor;
+				@include mQ(767px){
+					width: 150px;
+					height:150px;
+				}
+				@include mQ(1024px, 768px){
+					width: 250px;
+					height:250px;
+				}
+			}
+			img{
+				width: 100%;
+				filter: drop-shadow(5px 5px 15px darken($secondaryColor, 70));
+				position:relative;
+				animation: rotate 30s linear infinite;
+			}
+		}
+		@keyframes rotate{
+			0%,100%{
+				transform: rotate(10deg);
+			}
+			50%{
+				transform: rotate(-10deg);
+			}
+		}
+		
+	}
+	footer {
+		width: 100%;
+		margin-top: 3rem;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}
+}
+
+//mixin for signup page
+@mixin signup {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
+	.wrapper {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 1rem 0 3rem 0;
+		section.form {
+			width: 70%;
+			height: auto;
+			padding: 1rem 2rem;
+			@include mQ(767px){
+				width: 100%;
+				padding: 1rem;
+			}
+			@include mQ(1024px, 768px){
+				width: 90%;
+			}
+			header#signupheader {
+				width: 100%;
+				position: relative;
+				padding: 1rem 0;
+				@include mQ(767px){
+					padding: 0.5rem 0;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					height: 1px;
+					background: $secondaryColor;
+				}
+				.logo {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 1rem;
+					img {
+						width: 100px;
+						@include mQ(767px){
+							width: 60px;
+						}
+						@include mQ(1024px, 768px){
+							width: 80px;
+						}
+					}
+					a {
+						color: $primaryColor;
+						font-weight: bolder;
+						font-size: 38px;
+						@include mQ(767px){
+							font-size: 28px;
+						}
+						@include mQ(1024px, 768px){
+							font-size: 32px;
+						}
+						&:hover {
+							color: $secondaryColor;
+						}
+					}
+				}
+			}
+			form {
+				width: 100%;
+				height: auto;
+				background-color: $bgColorDarkAlpha;
+				background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+				background-position: bottom center;
+				background-repeat: no-repeat;
+				background-size: 100%;
+				padding: 2rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				gap: 1.5rem;
+				@include mQ(767px){
+					padding: 2rem 1rem;
+					gap: 1rem;
+				}
+				.error-txt {
+					display:none;
+					align-self: center;
+					color: $primaryColor;
+					background: lighten($primaryColor, 40);
+					padding: 8px 10px;
+					text-align: center;
+					margin-bottom: 10px;
+				}
+				.name-details {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+					width: 100%;
+					@include mQ(767px){
+						flex-direction: column;
+						justify-content: flex-start;
+						align-items: flex-start;
+						gap: 1.2rem;
+					}
+					@include mQ(1024px, 768px){
+						flex-direction: column;
+						justify-content: flex-start;
+						align-items: flex-start;
+						gap: 1.5rem;
+					}
+					.field {
+						width: 48%;
+						display: flex;
+						flex-direction: column;
+						justify-content: flex-start;
+						align-items: flex-start;
+						@include mQ(767px){
+							width: 100%;
+						}
+						@include mQ(1024px, 768px){
+							width: 100%;
+						}
+					}
+				}
+				.field {
+					position: relative;
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					gap: 0.6rem;
+					label {
+						color: $primaryColor;
+						font-weight: 500;
+						font-size: 17px;
+					}
+					input:not(input[type="submit"]) {
+						width: 100%;
+						height: 45px;
+						outline: none;
+						border: none;
+						font-size: 17px;
+						color: $secondaryColor;
+						padding: 0 2.1rem;
+						background: $bgColorDark;
+					}
+					input[type="file"]::-webkit-file-upload-button {
+						height: 45px;
+					}
+					input:not(input[type="file"]):focus + i:not(#pswdeye) {
+						color: $primaryColor;
+					}
+					input[type="number"]::-webkit-inner-spin-button,
+					input[type="number"]::-webkit-outer-spin-button {
+						-webkit-appearance: none;
+						margin: 0;
+					}
+					input[type="number"] {
+						-moz-appearance: textfield;
+					}
+					i:not(#pswdeye) {
+						position: absolute;
+						left: 10px;
+						bottom: 0.8rem;
+						color: $secondaryColor;
+						font-size: 17px;
+						transition: 0.2s;
+					}
+					i#pswdeye {
+						position: absolute;
+						right: 10px;
+						bottom: 0.8rem;
+						color: $secondaryColor;
+						font-size: 17px;
+						cursor: pointer;
+					}
+					i#pswdeye.active {
+						content: "\f070";
+						color: $secondaryColor;
+						cursor: pointer;
+						font-size: 17px;
+					}
+				}
+				.field.button {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 100%;
+					margin-top: 1.4rem;
+					input {
+						width: 200px;
+						padding: 10px 0;
+						outline: none;
+						border: none;
+						font-size: 16px;
+						color: $secondaryColor;
+						background: $primaryColor;
+						cursor: pointer;
+						transition: 0.2s;
+						&:hover {
+							background: darken($primaryColor, 10);
+						}
+					}
+				}
+				.link {
+					color: $secondaryColor;
+					font-size: 16px;
+					a {
+						color: $primaryColor;
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		position: relative;
+		width: 100%;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}
+}
+
+//login page mixin
+@mixin login {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 5;
+	.wrapper {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 1rem 0 3rem 0;
+		section.form {
+			width: 70%;
+			height: auto;
+			padding: 1rem 2rem;
+			@include mQ(767px){
+				width: 100%;
+				padding:1rem;
+			}
+			@include mQ(1024px, 768px){
+				width: 90%;
+			}
+			header#loginheader {
+				width: 100%;
+				position: relative;
+				padding: 1rem 0;
+				@include mQ(767px){
+					padding: 0.5rem 0;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					height: 1px;
+					background: $secondaryColor;
+				}
+				.logo {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 1rem;
+					img {
+						width: 100px;
+						@include mQ(767px){
+							width: 60px;
+						}
+						@include mQ(1024px, 768px){
+							width: 80px;
+						}
+					}
+					a {
+						color: $primaryColor;
+						font-weight: bolder;
+						font-size: 38px;
+						@include mQ(767px){
+							font-size: 28px;
+						}
+						@include mQ(1024px, 768px){
+							font-size: 32px;
+						}
+						&:hover {
+							color: $secondaryColor;
+						}
+					}
+				}
+			}
+			form {
+				width: 100%;
+				height: auto;
+				background-color: $bgColorDarkAlpha;
+				background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+				background-position: bottom center;
+				background-repeat: no-repeat;
+				background-size: 100%;
+				padding: 2rem 3rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				gap: 1.5rem;
+				@include mQ(767px){
+					padding: 2rem 1rem;
+				}
+				.error-txt {
+					display:none;
+					align-self: center;
+					color: $primaryColor;
+					background: lighten($primaryColor, 40);
+					padding: 8px 10px;
+					text-align: center;
+					margin-bottom: 10px;
+				}
+				.field {
+					position: relative;
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					gap: 0.6rem;
+					label {
+						color: $primaryColor;
+						font-weight: 500;
+						font-size: 17px;
+					}
+					input:not(input[type="submit"]) {
+						width: 100%;
+						height: 45px;
+						outline: none;
+						border: none;
+						font-size: 17px;
+						color: $secondaryColor;
+						padding: 0 2.1rem;
+						background: $bgColorDark;
+					}
+					input:not(input[type="file"]):focus + i:not(#pswdeye) {
+						color: $primaryColor;
+					}
+					i:not(#pswdeye) {
+						position: absolute;
+						left: 10px;
+						bottom: 0.8rem;
+						color: $secondaryColor;
+						font-size: 17px;
+						transition: 0.2s;
+					}
+					i#pswdeye {
+						position: absolute;
+						right: 10px;
+						bottom: 0.8rem;
+						color: $secondaryColor;
+						font-size: 17px;
+						cursor: pointer;
+					}
+					i#pswdeye.active {
+						content: "\f070";
+						color: $secondaryColor;
+						cursor: pointer;
+						font-size: 17px;
+					}
+				}
+				.field.button {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 100%;
+					margin-top: 1.4rem;
+					input {
+						width: 200px;
+						padding: 10px 0;
+						outline: none;
+						border: none;
+						font-size: 16px;
+						color: $secondaryColor;
+						background: $primaryColor;
+						cursor: pointer;
+						transition: 0.2s;
+						&:hover {
+							background: darken($primaryColor, 10);
+						}
+					}
+				}
+				.link {
+					color: $secondaryColor;
+					font-size: 16px;
+					a {
+						color: $primaryColor;
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		width: 100%;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}
+}
+
+
+//forgot password page mixin
+@mixin forgot {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 5;
+	.wrapper {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 1rem 0 3rem 0;
+		section.form {
+			width: 70%;
+			height: auto;
+			padding: 1rem 2rem;
+			@include mQ(767px){
+				width: 100%;
+				padding:1rem;
+			}
+			@include mQ(1024px, 768px){
+				width: 90%;
+			}
+			header#loginheader {
+				width: 100%;
+				position: relative;
+				padding: 1rem 0;
+				@include mQ(767px){
+					padding: 0.5rem 0;
+				}
+				&::before {
+					content: "";
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					width: 100%;
+					height: 1px;
+					background: $secondaryColor;
+				}
+				.logo {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 1rem;
+					img {
+						width: 100px;
+						@include mQ(767px){
+							width: 60px;
+						}
+						@include mQ(1024px, 768px){
+							width: 80px;
+						}
+					}
+					a {
+						color: $primaryColor;
+						font-weight: bolder;
+						font-size: 38px;
+						@include mQ(767px){
+							font-size: 28px;
+						}
+						@include mQ(1024px, 768px){
+							font-size: 32px;
+						}
+						&:hover {
+							color: $secondaryColor;
+						}
+					}
+				}
+			}
+			form {
+				width: 100%;
+				height: auto;
+				background-color: $bgColorDarkAlpha;
+				background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+				background-position: bottom center;
+				background-repeat: no-repeat;
+				background-size: 100%;
+				padding: 2rem 3rem;
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				gap: 1.5rem;
+				@include mQ(767px){
+					padding: 2rem 1rem;
+				}
+				h2{
+					color: $primaryColor;
+					font-weight: 600;
+					font-size: 24px;
+				}
+				.error-txt {
+					display:none;
+					align-self: center;
+					color: $primaryColor;
+					background: lighten($primaryColor, 40);
+					padding: 8px 10px;
+					text-align: center;
+					margin-bottom: 10px;
+				}
+				
+				.field {
+					position: relative;
+					width: 100%;
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					gap: 0.6rem;
+					label {
+						color: $primaryColor;
+						font-weight: 500;
+						font-size: 17px;
+					}
+					input:not(input[type="submit"]) {
+						width: 100%;
+						height: 45px;
+						outline: none;
+						border: none;
+						font-size: 17px;
+						color: $secondaryColor;
+						padding: 0 2.1rem;
+						background: $bgColorDark;
+					}
+					input:not(input[type="file"]):focus + i:not(#pswdeye) {
+						color: $primaryColor;
+					}
+					i:not(#pswdeye) {
+						position: absolute;
+						left: 10px;
+						bottom: 0.8rem;
+						color: $secondaryColor;
+						font-size: 17px;
+						transition: 0.2s;
+					}
+					i#pswdeye {
+						position: absolute;
+						right: 10px;
+						bottom: 0.8rem;
+						color: $secondaryColor;
+						font-size: 17px;
+						cursor: pointer;
+					}
+					i#pswdeye.active {
+						content: "\f070";
+						color: $secondaryColor;
+						cursor: pointer;
+						font-size: 17px;
+					}
+				}
+				.field.button {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					width: 100%;
+					margin-top: 1.4rem;
+					input {
+						width: 200px;
+						padding: 10px 0;
+						outline: none;
+						border: none;
+						font-size: 16px;
+						color: $secondaryColor;
+						background: $primaryColor;
+						cursor: pointer;
+						transition: 0.2s;
+						&:hover {
+							background: darken($primaryColor, 10);
+						}
+					}
+				}
+				.link {
+					color: $secondaryColor;
+					font-size: 16px;
+					a {
+						color: $primaryColor;
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		width: 100%;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}
+}
+
+
+
+//mixin for users
+@mixin users {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	z-index: 5;
+	.wrapper {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 0 0 3rem 0;
+		section.users {
+			width: 60%;
+			height: 100vh;
+			padding: 1rem 2rem;
+			background-color: $bgColorDarkAlpha;
+			background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+			background-position: bottom center;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			position: relative;
+			@include mQ(767px){
+				width: 100%;
+				padding: 1rem;
+			}
+			@include mQ(1024px, 768px){
+				width: 100%;
+			}
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $primaryColor;
+			}
+			header#usersheader {
+				width: 100%;
+				padding: 0.2rem 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.logo {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.4rem;
+					img {
+						width: 50px;
+						@include mQ(767px){
+							width:30px;
+						}
+					}
+					h1 {
+						color: $primaryColor;
+						font-weight: 600;
+						font-size: 24px;
+						@include mQ(767px){
+							font-size: 18px;
+						}
+					}
+				}
+				.connect {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.7rem;
+					h3 {
+						color: $secondaryColor;
+						font-size: 18px;
+						@include mQ(767px){
+							font-size: 16px;
+						}
+					}
+					h4 {
+						color: $secondaryColor;
+						font-size: 16px;
+						@include mQ(767px){
+							font-size: 14px;
+						}
+					}
+				}
+			}
+			header#userProfile {
+				width: 100%;
+				padding: 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.content {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.7rem;
+					img {
+						height: 70px;
+						width: 70px;
+						border-radius: 50%;
+						object-fit: cover;
+						@include mQ(767px){
+							width: 50px;
+							height:50px;
+						}
+					}
+					.details {
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						span {
+							color: $primaryColor;
+							font-size: 20px;
+							font-weight: 500;
+							@include mQ(767px){
+								font-size: 18px;
+							}
+						}
+						p {
+							color: $secondaryColor;
+							font-size: 16px;
+							font-weight: 400;
+							@include mQ(767px){
+								font-size: 14px;
+							}
+						}
+					}
+				}
+				a.logout {
+					color: $secondaryColor;
+					background-color: $primaryColor;
+					padding: 7px 15px;
+					font-size: 17px;
+					transition: 0.2s;
+					&:hover {
+						background-color: darken($primaryColor, 10);
+					}
+				}
+			}
+			.users-chats {
+				display: flex;
+				justify-content: space-evenly;
+				align-items: center;
+				padding: 1rem 0;
+				width: 100%;
+				h3 {
+					color: $secondaryColor;
+					font-size: 18px;
+					font-weight: 500;
+					cursor: pointer;
+					width: 50%;
+					padding: 5px 0;
+					border-bottom: 1px solid $primaryColor;
+					text-align: center;
+				}
+				h3.active {
+					background-color: $primaryColor;
+				}
+			}
+			main {
+				display: flex;
+				flex-direction: column;
+				justify-content: flex-start;
+				align-items: flex-start;
+				width: 100%;
+				height: auto;
+				.search {
+					width: 100%;
+					margin-bottom: 15px;
+					display: flex;
+					align-items: center;
+					justify-content: flex-start;
+					input {
+						height: 42px;
+						width: 100%;
+						padding: 0 12px;
+						font-size: 17px;
+						color: $secondaryColor;
+						border: none;
+						outline: none;
+						background-color: $bgColorDark;
+					}
+				}
+				.users-list {
+					display: flex;
+					flex-direction: column;
+					justify-content: flex-start;
+					align-items: flex-start;
+					margin: 1rem 0 0 0;
+					max-height: 400px;
+					overflow-y: auto;
+					width: 100%;
+					color: $secondaryColor;
+					border-top: 1px solid darken($secondaryColor, 70);
+					&::-webkit-scrollbar {
+						width: 0px;
+					}
+					a {
+						display: flex;
+						justify-content: space-between;
+						align-items: center;
+						padding: 0.8rem;
+						margin-bottom: 10px;
+						width: 100%;
+						page-break-after: 10px;
+						border-bottom: 1px solid darken($secondaryColor, 85);
+						&:last-child {
+							margin-bottom: 0px;
+							border: none;
+						}
+						.content {
+							display: flex;
+							justify-content: flex-start;
+							align-items: center;
+							gap: 0.8rem;
+							img {
+								height: 50px;
+								width: 50px;
+								border-radius: 50%;
+								object-fit: cover;
+							}
+							.details {
+								display: flex;
+								flex-direction: column;
+								justify-content: flex-start;
+								align-items: flex-start;
+								gap: 0.15rem;
+								span {
+									color: $primaryColor;
+									font-size: 20px;
+									font-weight: 500;
+								}
+								p {
+									color: $secondaryColor;
+									font-size: 16px;
+									font-weight: 400;
+								}
+							}
+						}
+						.status-dot{
+							color: #228b22;
+							font-size: 14px;
+						}
+						.status-dot.offline{
+							color: #ccc;
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		width: 100%;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}
+}
+
+//mixin for chats page
+@mixin chats{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
+	.wrapper {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 0 0 3rem 0;
+		section.chat-area {
+			width: 60%;
+			height: auto;
+			padding: 1rem 2rem;
+			background-color: $bgColorDarkAlpha;
+			background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+			background-position: bottom center;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			position: relative;
+			@include mQ(767px){
+				width: 100%;
+				padding: 1rem;
+			}
+			@include mQ(1024px, 768px){
+				width: 100%;
+			}
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $primaryColor;
+			}
+			header#chatsheader{
+				width: 100%;
+				padding: 0.2rem 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.logo {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.4rem;
+					img {
+						width: 50px;
+						@include mQ(767px){
+							width:30px;
+						}
+					}
+					h1 {
+						color: $primaryColor;
+						font-weight: 600;
+						font-size: 24px;
+						@include mQ(767px){
+							font-size: 18px;
+						}
+					}
+				}
+				.connect {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.7rem;
+					h3 {
+						color: $secondaryColor;
+						font-size: 18px;
+						@include mQ(767px){
+							font-size: 16px;
+						}
+					}
+					h4 {
+						color: $secondaryColor;
+						font-size: 16px;
+						@include mQ(767px){
+							font-size: 14px;
+						}
+					}
+				}
+			}
+			header#userProfile{
+				display: flex;
+				justify-content: flex-start;
+				align-items: center;
+				gap: 0.3rem;
+				padding-block: 1.5rem;
+				border-bottom: 2px solid $primaryColor;
+				a{
+					display: inline-block;
+					width: 50px;
+					color: $secondaryColor;
+					background: $bgColorDark;
+					padding: 16px 0;
+					border-radius: 50%;
+					margin-right: 1.5rem;
+					font-size: 17px;
+					font-weight: 600;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					@include mQ(767px){
+						margin-right: 0.5rem;
+					}
+				}
+				img{
+					width: 60px;
+					height:60px;
+					border-radius: 50%;
+					object-fit: cover;
+				}
+				.details {
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					span {
+						color: $primaryColor;
+						font-size: 20px;
+						font-weight: 500;
+					}
+					p {
+						color: $secondaryColor;
+						font-size: 16px;
+						font-weight: 400;
+					}
+				}
+			}
+			.chat-box{
+				height: 500px;
+				background-color: darken($secondaryColor, 35);
+				padding: 10px 30px 20px 30px;
+				background-image: url("https://www.transparenttextures.com/patterns/gray-floral.png");
+				background-repeat: repeat;
+  				background-attachment: fixed;
+				border-bottom: 2px solid $primaryColor;	
+				overflow-y: auto;
+				@include mQ(767px){
+					padding: 10px 8px 20px 8px;
+				}
+				@include mQ(1024px, 768px){
+					padding: 10px 12px 20px 12px;
+				}
+				&::-webkit-scrollbar {
+					width: 0px;
+				}
+				.chat{
+					margin: 15px 0;
+					p{
+						word-wrap: break-word;
+						padding: 8px 16px;
+						box-shadow: 0 0 32px rgb(0 0 0 /8%), 0 16px 16px -16px rgb(0 0 0 /10%);
+						@include mQ(767px){
+							font-size: 12px;
+						}
+						@include mQ(1024px, 768px){
+							font-size: 14px;
+						}
+					}
+				}
+				.outgoing{
+					display: flex;
+					.details{
+						margin-left: auto;
+						max-width: calc(100% - 130px);
+						p{
+							background-color: darken($primaryColor, 20);
+							color: $secondaryColor;
+							border-radius: 18px 18px 0 18px;
+						}
+					}
+				}
+				.incoming{
+					display: flex;
+					align-items: flex-end;
+					img{
+						height: 45px;
+						width: 45px;
+						object-fit: cover;
+						border-radius: 50%;
+					}
+					.details{
+						margin-left: 10px;
+						margin-right: auto;
+						max-width: calc(100% - 130px);
+						p{
+							color: $secondaryColor;
+							background: lighten($bgColorDark, 10);
+							border-radius: 18px 18px 18px 0;
+						}
+					}	
+				}	
+			}
+			.typing-area{
+				padding: 18px 15px;
+				display: flex;
+				justify-content: space-between;
+				@include mQ(767px){
+					padding: 12px 0px;
+				}
+				input{
+					height: 44px;
+					width: calc(100% - 58px);
+					font-size: 17px;
+					background: $bgColorDark;
+					color:$secondaryColor;
+					padding: 0 13px;
+					border: none;
+					outline: none;
+					transition: 0.2s;
+					&:focus{
+						border-bottom: 1px solid $primaryColor;
+					}
+				}
+				button{
+					width: 55px;
+					border: none;
+					outline: none;
+					background: darken($primaryColor, 20);
+					color: $secondaryColor;
+					font-size: 19px;
+					cursor: pointer;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+		}	
+	}
+	footer {
+		width: 100%;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		@include mQ(767px){
+			padding: 1rem 0;
+		}
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}	
+}
+
+//mixin for profile page
+@mixin profile{
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 5;
+	.wrapper {
+		width: 100%;
+		height: auto;
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin: 0 0 3rem 0;
+		section.profile-area {
+			width: 60%;
+			height: 100vh;
+			padding: 1rem 2rem;
+			background-color: $bgColorDarkAlpha;
+			background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1462889/pat.svg");
+			background-position: bottom center;
+			background-repeat: no-repeat;
+			background-size: 100%;
+			position: relative;
+			@include mQ(767px){
+				width: 100%;
+				padding: 1rem 1rem 2rem;
+			}
+			@include mQ(1024px, 768px){
+				width: 100%;
+			}
+			&::before {
+				content: "";
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 2px;
+				background-color: $primaryColor;
+			}
+			header#profileheader{
+				width: 100%;
+				padding: 0.2rem 1rem;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				.logo {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.4rem;
+					img {
+						width: 50px;
+						@include mQ(767px){
+							width:30px;
+						}
+					}
+					h1 {
+						color: $primaryColor;
+						font-weight: 600;
+						font-size: 24px;
+						@include mQ(767px){
+							font-size: 18px;
+						}
+					}
+				}
+				.connect {
+					display: flex;
+					justify-content: flex-start;
+					align-items: center;
+					gap: 0.7rem;
+					h3 {
+						color: $secondaryColor;
+						font-size: 18px;
+						@include mQ(767px){
+							font-size: 16px;
+						}
+					}
+					h4 {
+						color: $secondaryColor;
+						font-size: 16px;
+						@include mQ(767px){
+							font-size: 14px;
+						}
+					}
+				}
+			}
+			header#backBtn{
+				display: flex;
+				padding-block: 1.5rem;
+				border-bottom: 1px solid $secondaryColor;
+				a{
+					display: inline-block;
+					width: 50px;
+					color: $secondaryColor;
+					background: $bgColorDark;
+					padding: 16px 0;
+					border-radius: 50%;
+					margin-right: 1.5rem;
+					font-size: 17px;
+					font-weight: 600;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+			}
+			.profileSection{
+				width: 100%;
+				height: auto;
+				display: flex;
+				flex-direction:row;
+				align-items: flex-start;
+				justify-content: flex-start;
+				gap:2rem;
+				margin-block: 1rem;
+				padding-inline: 2rem;
+				@include mQ(767px){
+					flex-direction:column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					gap: 1rem;
+				}
+				.profileImg{
+					width: 60%;
+					height: 300px;
+					border: 5px ridge $primaryColor;
+					@include mQ(767px){
+						width: 100%;
+						height: 250px;
+					}
+					img{
+						width: 100%;
+						height:100%;
+						object-fit: cover;
+					}
+				}
+				.profileContacts{
+					display: flex;
+					flex-direction: column;
+					align-items: flex-start;
+					justify-content: flex-start;
+					gap: 0.4rem;
+					margin-top: 2rem;
+					@include mQ(767px){
+						margin-top: 0rem;
+					}
+					p{
+						display: flex;
+						align-items: center;
+						gap: 0.2rem;
+						font-size: 17px;
+						color: $secondaryColor;
+						font-weight: 400;
+						&:nth-child(even){
+							color: $primaryColor;
+							font-size: 19px;
+							font-weight: 600;
+							margin-bottom: 1rem;
+						}
+						a{
+							color: $primaryColor;
+							&:hover{
+								text-decoration: underline;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	footer {
+		width: 100%;
+		background: $bgColorDark;
+		padding: 1.5rem 0;
+		p {
+			text-align: center;
+			color: $secondaryColor;
+			font-size: 12px;
+			font-weight: 400;
+		}
+	}		
+}
+
+
+//media query mixin
+@mixin mQ($arg...){
+	@if length($arg) == 1 {
+		@media screen and (max-width: nth($arg, 1)){
+			@content;
+		}
+	}
+	@if length($arg) == 2 {
+		@media screen and (max-width: nth($arg, 1)) and (min-width: nth($arg, 2)){
+			@content;
+		}
+	}
+}

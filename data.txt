@@ -1,0 +1,3 @@
+DB password = bI3!q0oR3g~emQ!m
+DB Name = chatconnectdb
+DB Username = chatconnect
